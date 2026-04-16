@@ -116,53 +116,57 @@ All tables must be logically consistent, especially overall room capacity constr
 
 ### Data Dictionary
 1. Sheet: fact_bookings
-| Attribute          | คำอธิบาย                  | Data Type          | ช่วงค่าที่ถูกต้อง / ตัวอย่าง            |
-| ------------------ | ------------------------- | ------------------ | --------------------------------------- |
-| booking_id         | หมายเลขการจอง             | Nominal (Text)     | b-002266, b-003216                      |
-| guest_id           | หมายเลขผู้เข้าพัก         | Nominal (Text)     | g-2157, g-3107                          |
-| booking_date       | วันที่ทำการจอง            | Interval (Date)    | 26/09/2024                              |
-| check_in_date      | วันที่เช็คอิน             | Interval (Date)    | 01/01/2025                              |
-| check_out_date     | วันที่เช็คเอาท์           | Interval (Date)    | 03/01/2025                              |
-| room_type_id       | ประเภทห้องพัก             | Nominal            | rt-01, rt-02, rt-03                     |
-| rate_code_id       | รหัสอัตราค่าห้อง          | Nominal            | NRF, PROMO, AAA, RACK, CORP             |
-| channel_id         | ช่องทางการจอง             | Nominal            | OTA_BKG, OTA_EXP, DIRECT, WALKIN, CORPC |
-| segment_id         | กลุ่มลูกค้า               | Nominal            | LEISURE, BUSINESS                       |
-| status             | สถานะการจอง               | Nominal            | Confirmed, Cancelled, No-Show           |
-| total_room_revenue | รายได้รวมจากห้องพัก (USD) | Ratio (Continuous) | 0 – 4,200                               |
-| number_of_rooms    | จำนวนห้องที่จอง           | Ratio (Discrete)   | 1 – 4                                   |
-| adults_count       | จำนวนผู้ใหญ่              | Ratio (Discrete)   | 1 – 8                                   |
-| children_count     | จำนวนเด็ก                 | Ratio (Discrete)   | 0 – 4                                   |
 
+| Attribute | คำอธิบาย | Data Type | ช่วงค่าที่ถูกต้อง / ตัวอย่าง |
+|---|---|---|---|
+| booking_id | หมายเลขการจอง | Nominal (Text) | b-002266, b-003216 |
+| guest_id | หมายเลขผู้เข้าพัก | Nominal (Text) | g-2157, g-3107 |
+| booking_date | วันที่ทำการจอง | Interval (Date) | 26/09/2024 |
+| check_in_date | วันที่เช็คอิน | Interval (Date) | 01/01/2025 |
+| check_out_date | วันที่เช็คเอาท์ | Interval (Date) | 03/01/2025 |
+| room_type_id | ประเภทห้องพัก | Nominal | rt-01, rt-02, rt-03 |
+| rate_code_id | รหัสอัตราค่าห้อง | Nominal | NRF, PROMO, AAA, RACK, CORP |
+| channel_id | ช่องทางการจอง | Nominal | OTA_BKG, OTA_EXP, DIRECT, WALKIN, CORPC |
+| segment_id | กลุ่มลูกค้า | Nominal | LEISURE, BUSINESS |
+| status | สถานะการจอง | Nominal | Confirmed, Cancelled, No-Show |
+| total_room_revenue | รายได้รวมจากห้องพัก (USD) | Ratio (Continuous) | 0 – 4,200 |
+| number_of_rooms | จำนวนห้องที่จอง | Ratio (Discrete) | 1 – 4 |
+| adults_count | จำนวนผู้ใหญ่ | Ratio (Discrete) | 1 – 8 |
+| children_count | จำนวนเด็ก | Ratio (Discrete) | 0 – 4 |
 
 2. Sheet: dim_room_inventory
-| Attribute                  | คำอธิบาย                                  | Data Type        | ช่วงค่าที่ถูกต้อง / ตัวอย่าง |
-| -------------------------- | ----------------------------------------- | ---------------- | ---------------------------- |
-| `date`                     | วันที่                                    | Interval (Date)  | 01/01/2025                   |
-| `total_capacity`           | จำนวนห้องทั้งหมดของโรงแรม                 | Ratio (Discrete) | 100 – 500                    |
-| `rooms_out_of_order`       | ห้องที่ไม่สามารถขายได้ (ซ่อม/ปิดปรับปรุง) | Ratio (Discrete) | 0 – 50                       |
-| `rooms_available_for_sale` | ห้องที่พร้อมขาย                           | Ratio (Discrete) | 50 – 500                     |
+
+| Attribute | คำอธิบาย | Data Type | ช่วงค่าที่ถูกต้อง / ตัวอย่าง |
+|---|---|---|---|
+| date | วันที่ | Interval (Date) | 01/01/2025 |
+| total_capacity | จำนวนห้องทั้งหมดของโรงแรม | Ratio (Discrete) | 100 – 500 |
+| rooms_out_of_order | ห้องที่ไม่สามารถขายได้ (ซ่อม/ปิดปรับปรุง) | Ratio (Discrete) | 0 – 50 |
+| rooms_available_for_sale | ห้องที่พร้อมขาย | Ratio (Discrete) | 50 – 500 |
 
 3. Sheet: dim_rate_codes
-| Attribute      | คำอธิบาย         | Data Type      | ช่วงค่าที่ถูกต้อง / ตัวอย่าง              |
-| -------------- | ---------------- | -------------- | ----------------------------------------- |
-| `rate_code_id` | รหัสอัตราค่าห้อง | Nominal        | NRF, PROMO, AAA, RACK, CORP               |
-| `description`  | คำอธิบายเรท      | Nominal (Text) | Non-refundable, Promotion, Corporate Rate |
+
+| Attribute | คำอธิบาย | Data Type | ช่วงค่าที่ถูกต้อง / ตัวอย่าง |
+|---|---|---|---|
+| rate_code_id | รหัสอัตราค่าห้อง | Nominal | NRF, PROMO, AAA, RACK, CORP |
+| description | คำอธิบายเรท | Nominal (Text) | Non-refundable, Promotion, Corporate Rate |
 
 4. Sheet: dim_channels
-| Attribute        | คำอธิบาย                 | Data Type          | ช่วงค่าที่ถูกต้อง / ตัวอย่าง |
-| ---------------- | ------------------------ | ------------------ | ---------------------------- |
-| `channel_id`     | รหัสช่องทางการจอง        | Nominal            | OTA_BKG, OTA_EXP, DIRECT     |
-| `channel_name`   | ชื่อช่องทาง              | Nominal (Text)     | Booking.com, Expedia, Direct |
-| `commission_pct` | เปอร์เซ็นต์ค่าคอมมิชชั่น | Ratio (Continuous) | 0 – 0.30 (เช่น 0.15 = 15%)   |
+
+| Attribute | คำอธิบาย | Data Type | ช่วงค่าที่ถูกต้อง / ตัวอย่าง |
+|---|---|---|---|
+| channel_id | รหัสช่องทางการจอง | Nominal | OTA_BKG, OTA_EXP, DIRECT |
+| channel_name | ชื่อช่องทาง | Nominal (Text) | Booking.com, Expedia, Direct |
+| commission_pct | เปอร์เซ็นต์ค่าคอมมิชชั่น | Ratio (Continuous) | 0 – 0.30 (เช่น 0.15 = 15%) |
 
 5. Sheet: dim_calendar
-| Attribute    | คำอธิบาย                     | Data Type        | ช่วงค่าที่ถูกต้อง / ตัวอย่าง |
-| ------------ | ---------------------------- | ---------------- | ---------------------------- |
-| `date`       | วันที่                       | Interval (Date)  | 01/01/2025                   |
-| `day_name`   | ชื่อวันในสัปดาห์             | Nominal          | Monday, Tuesday              |
-| `is_weekend` | เป็นวันหยุดสุดสัปดาห์หรือไม่ | Boolean (Encoded as Integer) | 0, 1              |
-| `is_holiday` | เป็นวันหยุดนักขัตฤกษ์หรือไม่ | Boolean (Encoded as Integer) | 0, 1             |
-| `season`     | ฤดูกาล                       | Nominal          | High, Low, Shoulder          |
+
+| Attribute | คำอธิบาย | Data Type | ช่วงค่าที่ถูกต้อง / ตัวอย่าง |
+|---|---|---|---|
+| date | วันที่ | Interval (Date) | 01/01/2025 |
+| day_name | ชื่อวันในสัปดาห์ | Nominal | Monday, Tuesday |
+| is_weekend | เป็นวันหยุดสุดสัปดาห์หรือไม่ | Boolean (0 = False, 1 = True) | 0, 1 |
+| is_holiday | เป็นวันหยุดนักขัตฤกษ์หรือไม่ | Boolean (0 = False, 1 = True) | 0, 1 |
+| season | ฤดูกาล | Nominal | High, Low, Shoulder |
 
 
 ตัวแปรเป้าหมาย (Target Variable)
