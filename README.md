@@ -2,34 +2,31 @@
 
 
 prompt :
-Act as a Data Engineer and Hotel Revenue Management Expert.
-Generate a synthetic hotel dataset in Excel (.xlsx) format for 1 year (Jan 1 – Dec 31, 2025).
-The dataset must contain 5 relational tables that simulate a Revenue Stagnation scenario (high occupancy but low RevPAR compared to competitors).
-1. Hotel Configuration
-Total hotel capacity: 120 rooms
-Room Types:
-Single: 70 rooms (Base Rate: $80)
-Deluxe: 30 rooms (Base Rate: $150)
-Suite: 20 rooms (Base Rate: $350)
-Seasons (Tropical / City destination):
-High Season
-January – March
-November – December
-Shoulder Season
-April – May
-September – October
-Low Season
-June – August
-2. Tables to Generate
-Table 1 — fact_bookings
-Target size: 5,000 – 7,000 rows
+Act as a Data Engineer and Revenue Management Expert.
+Generate a synthetic hotel dataset in .xlsx format for the year 2025 (Jan 1 – Dec 31). The dataset must contain 5 relational tables, each placed in a separate worksheet in the Excel file. The dataset must simulate a Revenue Stagnation problem where the hotel shows high occupancy but low RevPAR compared to competitors.
+1. Hotel Configuration Total Hotel Capacity: 90 rooms. Room types exist for pricing and booking purposes. You must use the room_type_id format:
+
+SLG (Single): 50 rooms (Base Rate: $80)
+DLX (Deluxe): 30 rooms (Base Rate: $150)
+STE (Suite): 10 rooms (Base Rate: $350)
+Important rule: While bookings in fact_bookings must specify the room_type_id, the daily room inventory and availability limits in dim_room_inventory must be combined and calculated at the total hotel level (90 rooms).
+2. Seasons (Tropical / City Destination)
+
+High Season: January – March, November – December
+Shoulder Season: April – May, September – October
+Low Season: June – August
+3. Table Requirements The Excel file must contain the following worksheets.
+Table 1: fact_bookings
+
+Rows: 5,000 – 7,000 rows
+Each row represents one reservation transaction.
 Columns:
-booking_id
-guest_id
+booking_id (Primary Key)
+guest_id (Must follow the pattern g-xxxx, e.g., g-0001, g-0125)
 booking_date
 check_in_date
 check_out_date
-room_type_id
+room_type_id (Must use the ID pattern: rt-01, rt-02, rt-03)
 rate_code_id
 channel_id
 segment_id
@@ -38,100 +35,70 @@ total_room_revenue
 number_of_rooms
 adults_count
 children_count
-Rules:
-Most bookings are 1–3 nights
-number_of_rooms usually 1
-Some cancellations (~5-10%)
-Table 2 — dim_room_inventory
-Exactly 365 rows (1 row per date)
+Important constraints:
+Maximum Length of Stay: The length of stay (the difference between check_in_date and check_out_date) must be between 1 and 3 days maximum.
+number_of_rooms must represent how many rooms were booked in that reservation.
+The room nights between check_in_date and check_out_date must consume total room inventory.
+Check-out date must always be after check-in date.
+Table 2: dim_room_inventory
+
+Rows: 365 rows (one per date)
 Columns:
 date
-total_capacity
+total_capacity (fixed = 90)
 rooms_out_of_order
 rooms_available_for_sale
-Rules:
-total_capacity must always equal 120
-rooms_out_of_order randomly between 0–3
-rooms_available_for_sale must be calculated as
-rooms_available_for_sale = total_capacity - rooms_out_of_order - occupied_rooms
-where occupied_rooms is derived from fact_bookings for that date
-IMPORTANT DATA CONSISTENCY RULE (CRITICAL)
-The dataset must ensure logical consistency between fact_bookings and dim_room_inventory.
-For each date:
-Calculate the number of rooms occupied from fact_bookings
-where
-check_in_date ≤ date < check_out_date
-AND status = 'Confirmed'
-Then compute
-rooms_available_for_sale
-= total_capacity
-- rooms_out_of_order
-- occupied_rooms
-Example:
-If on 2025-05-01
-total_capacity = 120
-rooms_out_of_order = 2
-occupied rooms from fact_bookings = 5
-Then
-rooms_available_for_sale = 120 - 2 - 5 = 113
-This rule must hold for every date.
-The booking data and inventory table must perfectly match.
-Table 3 — dim_rate_codes
-Include at least:
-Rack Rate
-AAA
-Corporate
-Non-Refundable
-Seasonal Promo
-Columns:
-rate_code_id
-rate_name
-description
-is_commissionable
-Table 4 — dim_channels
-Include:
-Direct Website (0% commission)
-OTA (15-20% commission)
-Walk-in (0%)
-Corporate (10%)
-Columns:
-channel_id
-channel_name
-channel_type
-commission_rate
-Table 5 — dim_calendar
-365 rows.
+Important rules:
+Inventory is pooled at the total hotel level. Do not separate by room type.
+Calculation rule: rooms_available_for_sale = total_capacity − rooms_out_of_order
+Logical Consistency: The rooms_out_of_order (maintenance rooms) must logically align with the sum of number_of_rooms booked per date in fact_bookings. Specifically, the equation rooms_out_of_order + total daily occupied rooms MUST NEVER exceed total_capacity (90).
+Table 3: dim_rate_codes Include the following rows:
+
+RACK - Rack Rate
+AAA - AAA Discount
+CORP - Corporate
+NRF - Non-Refundable
+PROMO - Seasonal Promo
+Table 4: dim_channels Include the following:
+
+DIRECT - Direct Website (0% commission)
+OTA_EXP - Expedia (18% commission)
+OTA_BKG - Booking.com (18% commission)
+WALKIN - Walk-in (0% commission)
+CORPC - Corporate (10% commission)
+Table 5: dim_calendar
+
+Rows: 365
 Columns:
 date
 day_name
 is_weekend
 is_holiday
 season
-3. Hidden Business Patterns to Inject
-Embed the following realistic revenue management problems in the data.
-1. The Volume Trap
-Overall occupancy 75-85%, but:
-Most bookings in Single rooms
-Heavy dependence on OTA channels
-Direct bookings remain relatively low
-2. Pricing Inefficiency
-Weekend prices should be only 5-10% higher than weekdays, even though demand is higher.
-This simulates poor revenue management pricing strategy.
-3. The Suite Gap
-Suites should have very low occupancy (<20%) because:
-Suites are mostly sold at Rack Rate
-Rarely discounted or promoted
-4. Lead Time Problem
-Booking Lead Time (BLT):
-OTA / low-value channels book far in advance (60-120 days)
-Direct high-value guests book very late (0-7 days)
-This creates inventory blockage and revenue loss.
-4. Output Format
-Generate one Excel file (.xlsx).
-Each table must be a separate worksheet named:
+4. Hidden Revenue Management Patterns The dataset must intentionally simulate Revenue Management inefficiencies.
+
+4.1 The Volume Trap: Overall hotel occupancy should appear high (75–85%). However, bookings must be concentrated in rt-01 rooms and OTA channels (Expedia / Booking.com). Result: High occupancy, Low ADR, High commission costs.
+4.2 Pricing Inefficiency: Weekend pricing must be poorly optimized. Rule: Weekend revenue should be only 5–10% higher than weekdays despite higher demand, simulating lost revenue opportunity.
+4.3 The Suite Gap: rt-03 rooms must show very low occupancy (<20%). Reasons embedded in data: rt-03 rarely receives discounts, very few PROMO rate codes are applied to rt-03, and most demand flows into rt-01.
+4.4 Lead Time Problem: Booking behavior should reflect inventory blocking by low-value demand. High-value demand: Direct bookings, short lead time (0–14 days before check-in). Low-value demand: OTA bookings, long lead time (30–120 days).
+5. Returning Guest Pattern (Customer Loyalty Signal) The dataset must simulate a small proportion of returning guests.
+
+Rule: Exactly 2% of guests must be returning guests.
+Implementation:
+Returning guests are identified strictly by exactly duplicate guest_id values (e.g., g-0125 appearing multiple times) in fact_bookings.
+A returning guest must have at least 2 separate reservations.
+The second booking's check_in_date must occur after the first stay's check_out_date.
+Guest distribution: ~98% one-time guests, ~2% repeat guests.
+Returning Guest Behavior Patterns:
+Channel Preference Shift: Returning guests are more likely to book via DIRECT or CORPC (At least 50–60% of returning guest bookings must use these channels).
+Room Type Upgrade Tendency: Returning guests have a higher probability of booking rt-02 rooms compared to first-time guests.
+Shorter Lead Time: Returning guests tend to book closer to arrival (7–21 days before check-in).
+Higher Booking Value: Returning guests are less price-sensitive. They use RACK or CORP rate codes more often and use PROMO rate codes less frequently.
+6. Output Format Generate one Excel file (.xlsx) with five worksheets:
+
 fact_bookings
 dim_room_inventory
 dim_rate_codes
 dim_channels
 dim_calendar
-The data should be clean, realistic, and relationally consistent so it can be used for SQL, BI dashboards, and revenue analysis.
+All tables must be logically consistent, especially overall room capacity constraints, booking check-in/check-out dates (max 3 days stay), total inventory availability matching rooms_out_of_order constraint, occupancy calculations, and returning guest behavior patterns utilizing the g-xxxx guest ID and rt-xx room type formats.
