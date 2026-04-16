@@ -102,3 +102,20 @@ dim_rate_codes
 dim_channels
 dim_calendar
 All tables must be logically consistent, especially overall room capacity constraints, booking check-in/check-out dates (max 3 days stay), total inventory availability matching rooms_out_of_order constraint, occupancy calculations, and returning guest behavior patterns utilizing the g-xxxx guest ID and rt-xx room type formats.
+
+## 1. บทนำและความเป็นมา (Introduction & Background)
+
+## 2. วัตถุประสงค์ของโครงการ (Research Objectives)
+
+## 3. คำถามการวิจัยและสมมติฐาน (Research Questions & Hypothesis)
+*research question*
+
+## 4. ชุดข้อมูลและตัวแปรที่ใช้ (Dataset & Features)
+
+ตัวแปรเป้าหมาย (Target Variable)
+ตัวแปรสำคัญที่ใช้วิเคราะห์ (Key Features)
+
+## 5. ระเบียบวิธีวิจัย (Methodology)
+5.1 Data Cleaning
+
+(แปะรูป)
