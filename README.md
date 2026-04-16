@@ -117,5 +117,14 @@ All tables must be logically consistent, especially overall room capacity constr
 
 ## 5. ระเบียบวิธีวิจัย (Methodology)
 5.1 Data Cleaning
+<img width="1920" height="1020" alt="Screenshot 2026-04-16 205034" src="https://github.com/user-attachments/assets/1bea2f51-b62b-4fb1-912d-755e4837e5f1" />
+<img width="1920" height="1020" alt="Screenshot 2026-04-16 210316" src="https://github.com/user-attachments/assets/8d11ac6e-7d59-4011-9092-1e1eeebf869d" />
+<img width="1920" height="1020" alt="Screenshot 2026-04-16 205628" src="https://github.com/user-attachments/assets/b18e9707-a3ae-4106-b98d-bfa489c302dd" />
+<img width="1920" height="1020" alt="Screenshot 2026-04-16 205532" src="https://github.com/user-attachments/assets/e14b1764-ed8e-4cad-9b24-0671e05900d2" />
+Data Cleaning Summary
+ไม่พบค่า Missing Values และ Duplicate Records
+ตรวจสอบและปรับชนิดข้อมูลของตัวแปร (Data Types) ให้เหมาะสมกับการวิเคราะห์
+
+
 
 (แปะรูป)
