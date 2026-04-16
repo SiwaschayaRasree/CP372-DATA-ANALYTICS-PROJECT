@@ -111,6 +111,8 @@ All tables must be logically consistent, especially overall room capacity constr
 *research question*
 
 ## 4. ชุดข้อมูลและตัวแปรที่ใช้ (Dataset & Features)
+* จำนวนแถวข้อมูล: 5,409 แถว
+* จำนวนตัวแปรทั้งหมด: 14 ตัวแปร
 
 ตัวแปรเป้าหมาย (Target Variable)
 ตัวแปรสำคัญที่ใช้วิเคราะห์ (Key Features)
