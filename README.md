@@ -114,6 +114,23 @@ All tables must be logically consistent, especially overall room capacity constr
 * จำนวนแถวข้อมูล: 5,409 แถว
 * จำนวนตัวแปรทั้งหมด: 14 ตัวแปร
 
+| Attribute | คำอธิบาย | Data Type | ช่วงค่าที่ถูกต้อง / ตัวอย่าง |
+|---|---|---|---|
+| `booking_id` | หมายเลขการจอง | Nominal (Text) | b-002266, b-003216 |
+| `guest_id` | หมายเลขผู้เข้าพัก | Nominal (Text) | g-2157, g-3107 |
+| `booking_date` | วันที่ทำการจอง | Interval (Date) | 26/09/2024 |
+| `check_in_date` | วันที่เช็คอิน | Interval (Date) | 01/01/2025 |
+| `check_out_date` | วันที่เช็คเอาท์ | Interval (Date) | 03/01/2025 |
+| `room_type_id` | ประเภทห้องพัก | Nominal | rt-01, rt-02, rt-03 |
+| `rate_code_id` | รหัสอัตราค่าห้อง | Nominal | NRF, PROMO, AAA, RACK, CORP |
+| `channel_id` | ช่องทางการจอง | Nominal | OTA_BKG, OTA_EXP, DIRECT, WALKIN, CORPC |
+| `segment_id` | กลุ่มลูกค้า | Nominal (Binary) | LEISURE, BUSINESS |
+| `status` | สถานะการจอง | Nominal | Confirmed, Cancelled, No-Show |
+| `total_room_revenue` | รายได้รวมจากห้องพัก (USD) | Ratio (Continuous) | 0 – 4,200 |
+| `number_of_rooms` | จำนวนห้องที่จอง | Ratio (Discrete) | 1 – 4 |
+| `adults_count` | จำนวนผู้ใหญ่ | Ratio (Discrete) | 1 – 8 |
+| `children_count` | จำนวนเด็ก | Ratio (Discrete) | 0 – 4 |
+
 ตัวแปรเป้าหมาย (Target Variable)
 ตัวแปรสำคัญที่ใช้วิเคราะห์ (Key Features)
 
