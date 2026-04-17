@@ -174,14 +174,17 @@ All tables must be logically consistent, especially overall room capacity constr
 
 ## 5. ระเบียบวิธีวิจัย (Methodology)
 5.1 Data Cleaning
-<img width="1920" height="1020" alt="Screenshot 2026-04-16 205034" src="https://github.com/user-attachments/assets/1bea2f51-b62b-4fb1-912d-755e4837e5f1" />
-<img width="1920" height="1020" alt="Screenshot 2026-04-16 210316" src="https://github.com/user-attachments/assets/8d11ac6e-7d59-4011-9092-1e1eeebf869d" />
-<img width="1920" height="1020" alt="Screenshot 2026-04-16 205628" src="https://github.com/user-attachments/assets/b18e9707-a3ae-4106-b98d-bfa489c302dd" />
-<img width="1920" height="1020" alt="Screenshot 2026-04-16 205532" src="https://github.com/user-attachments/assets/e14b1764-ed8e-4cad-9b24-0671e05900d2" />
-Data Cleaning Summary
+Table fact bookings 
+<img width="1920" height="1020" alt="Screenshot 2026-04-17 133250" src="https://github.com/user-attachments/assets/ca2ad869-9659-4218-9233-41cc799cfbfb" />
+ไม่พบค่า Missing Values และ มีบางส่วนที่เป็นค่า Duplicate Records เนื่องจากการที่ลูกค้ากลับมาใช้ซ้ำ (guest_id)
+ตรวจสอบและปรับชนิดข้อมูลของตัวแปร (Data Types) ให้เหมาะสมกับการวิเคราะห์
+<img width="1920" height="1020" alt="Screenshot 2026-04-17 133307" src="https://github.com/user-attachments/assets/9cc5fdc5-1784-464e-b940-57b147a98384" />
+<img width="1920" height="1020" alt="Screenshot 2026-04-17 133259" src="https://github.com/user-attachments/assets/0fe11048-3035-4cbc-96f3-e00db7d516be" />
+<img width="1920" height="1020" alt="Screenshot 2026-04-17 135848" src="https://github.com/user-attachments/assets/a47b73ca-eb17-448f-adbe-86c9abfd8fbe" />
+<img width="1920" height="1020" alt="Screenshot 2026-04-17 135853" src="https://github.com/user-attachments/assets/494c52fe-f797-4be0-95f1-d4b7c42da6f9" />
+<img width="1920" height="1020" alt="Screenshot 2026-04-17 135844" src="https://github.com/user-attachments/assets/580fe4fb-1c97-458f-87f1-f245e47b0886" />
+ใน Table dim room inventory , Table dim calendar , Table dim rate codes และ Table dim channels
 ไม่พบค่า Missing Values และ Duplicate Records
 ตรวจสอบและปรับชนิดข้อมูลของตัวแปร (Data Types) ให้เหมาะสมกับการวิเคราะห์
 
 
-
-(แปะรูป)
