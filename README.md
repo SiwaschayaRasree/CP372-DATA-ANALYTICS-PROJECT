@@ -181,7 +181,6 @@ Table fact bookings
 <img width="1920" height="1020" alt="Screenshot 2026-04-17 133307" src="https://github.com/user-attachments/assets/9cc5fdc5-1784-464e-b940-57b147a98384" />
 <img width="1920" height="1020" alt="Screenshot 2026-04-17 133259" src="https://github.com/user-attachments/assets/0fe11048-3035-4cbc-96f3-e00db7d516be" />
 <img width="1920" height="1020" alt="Screenshot 2026-04-17 135848" src="https://github.com/user-attachments/assets/a47b73ca-eb17-448f-adbe-86c9abfd8fbe" />
-<img width="1920" height="1020" alt="Screenshot 2026-04-17 135853" src="https://github.com/user-attachments/assets/494c52fe-f797-4be0-95f1-d4b7c42da6f9" />
 <img width="1920" height="1020" alt="Screenshot 2026-04-17 135844" src="https://github.com/user-attachments/assets/580fe4fb-1c97-458f-87f1-f245e47b0886" />
 ใน Table dim room inventory , Table dim calendar , Table dim rate codes และ Table dim channels
 ไม่พบค่า Missing Values และ Duplicate Records
