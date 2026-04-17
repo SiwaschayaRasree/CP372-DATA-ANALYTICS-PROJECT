@@ -142,14 +142,19 @@ hypothesis 5 : </n>
 ## 5. ระเบียบวิธีวิจัย (Methodology)
 5.1 Data Cleaning
 Table fact bookings 
-<img width="1920" height="1020" alt="Screenshot 2026-04-17 133250" src="https://github.com/user-attachments/assets/ca2ad869-9659-4218-9233-41cc799cfbfb" />
+<img width="1920" height="1020" alt="Screenshot 2026-04-17 231355" src="https://github.com/user-attachments/assets/19a413cb-acd1-4401-bbf2-fb49ca06bfbd" />
+
 ไม่พบค่า Missing Values และ มีบางส่วนที่เป็นค่า Duplicate Records เนื่องจากการที่ลูกค้ากลับมาใช้ซ้ำ (guest_id)
 ตรวจสอบและปรับชนิดข้อมูลของตัวแปร (Data Types) ให้เหมาะสมกับการวิเคราะห์
-<img width="1920" height="1020" alt="Screenshot 2026-04-17 133307" src="https://github.com/user-attachments/assets/9cc5fdc5-1784-464e-b940-57b147a98384" />
-<img width="1920" height="1020" alt="Screenshot 2026-04-17 133259" src="https://github.com/user-attachments/assets/0fe11048-3035-4cbc-96f3-e00db7d516be" />
-<img width="1920" height="1020" alt="Screenshot 2026-04-17 135848" src="https://github.com/user-attachments/assets/a47b73ca-eb17-448f-adbe-86c9abfd8fbe" />
-<img width="1920" height="1020" alt="Screenshot 2026-04-17 135844" src="https://github.com/user-attachments/assets/580fe4fb-1c97-458f-87f1-f245e47b0886" />
-ใน Table dim room inventory , Table dim calendar , Table dim rate codes และ Table dim channels
+<img width="1920" height="1020" alt="Screenshot 2026-04-17 231404" src="https://github.com/user-attachments/assets/078137f0-0ebd-462e-b229-19646c260b3a" />
+
+<img width="1920" height="1020" alt="Screenshot 2026-04-17 231410" src="https://github.com/user-attachments/assets/c6aca2b6-af43-451c-9003-7a229254b444" />
+
+<img width="1920" height="1020" alt="Screenshot 2026-04-17 231440" src="https://github.com/user-attachments/assets/185ccecf-b112-4ed5-b62d-9fc39ab14141" />
+
+<img width="1920" height="1020" alt="Screenshot 2026-04-17 231445" src="https://github.com/user-attachments/assets/3c3ecb21-8a42-4d88-b3a3-16778f223b30" />
+
+ใน Table room inventory , Table calendar , Table rate codes และ Table channels
 ไม่พบค่า Missing Values และ Duplicate Records
 ตรวจสอบและปรับชนิดข้อมูลของตัวแปร (Data Types) ให้เหมาะสมกับการวิเคราะห์
 
